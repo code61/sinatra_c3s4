@@ -17,7 +17,9 @@ post '/' do
   @name  = params[:name]
   @email = params[:email]
 
-  Pony.mail(:to=>@email, :subject=>"Welcome to Sams Sarnies, #{@name}", :body=>"Hi, #{@name}, you have been added to our mailling list. Best wishes, Sam.") # email sending code
+  # Pony.mail(:to=>@email, :subject=>"Welcome to Sams Sarnies, #{@name}", :body=>"Hi, #{@name}, you have been added to our mailling list. Best wishes, Sam.") # basic email sending code
 
+  Pony.mail(:to=>@email, :subject=>"Welcome to Sams Sarnies, #{@name}",
+						:body=>erb(:email, :layout => false)) # basic email sending code
   erb :thanks
 end
